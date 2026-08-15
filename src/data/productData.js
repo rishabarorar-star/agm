@@ -7,7 +7,7 @@ export const productData = {
   description: "AGM Voyage combines thermal imaging and digital low-light vision in a single advanced fusion binocular, providing enhanced observation, target detection and recognition across demanding day and night environments.",
   
   price: "PRICE ON REQUEST",
-  cataloguePath: "/catalogue/agm-voyage.pdf",
+  cataloguePath: import.meta.env.BASE_URL + "catalogue/agm-voyage.pdf",
   catalogueTitle: "AGM Voyage Product Catalogue",
   catalogueFormat: "PDF DOCUMENT",
 
