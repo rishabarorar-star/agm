@@ -19,10 +19,8 @@ export const DetectionRecognition = () => {
   const currentStep = productData.hudSteps[activeStepIdx];
 
   return (
-    <section className="relative py-28 px-4 sm:px-6 bg-[#081019]/90 border-y border-cyan-500/15 overflow-hidden">
-      {/* Background Radial Glow */}
-      <div className="absolute top-1/2 left-1/3 -translate-y-1/2 w-[600px] h-[600px] bg-[#00D9FF]/10 rounded-full blur-3xl pointer-events-none" />
-
+    <section className="relative py-28 px-4 sm:px-6 bg-[#081019]/90  overflow-hidden">
+  
       <div className="max-w-7xl mx-auto space-y-14 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -78,8 +76,8 @@ export const DetectionRecognition = () => {
                       <div className="flex items-center space-x-3">
                         <span className={`w-8 h-8 rounded-lg flex items-center justify-center font-mono font-bold text-xs border ${
                           isActive 
-                            ? 'bg-[#00D9FF] text-black border-[#00D9FF]' 
-                            : 'bg-[#05070B] text-cyan-400 border-cyan-500/30'
+                            ? 'bg-[#00D9FF] text-white border-[#00D9FF]' 
+                            : 'bg-[#05070B] text-gray-400 border-cyan-500/30'
                         }`}>
                           {step.step}
                         </span>

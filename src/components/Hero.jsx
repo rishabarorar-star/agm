@@ -8,11 +8,11 @@ export const Hero = () => {
   return (
     <section id="overview" className="relative min-h-screen pt-28 pb-16 px-4 sm:px-6 flex flex-col justify-between items-center overflow-hidden">
       {/* Background Lighting & Radar graphic */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-tr from-[#00D9FF]/10 via-[#4EA8FF]/5 to-[#7567E8]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-accent-soft rounded-full blur-3xl pointer-events-none" />
 
       {/* Radar Ring Visual */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-cyan-500/10 rounded-full pointer-events-none animate-radar" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-cyan-500/15 rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-accent-soft rounded-full pointer-events-none animate-radar" />
+      {/* <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] border border-accent-soft/60 rounded-full pointer-events-none" /> */}
 
       <div className="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center z-10 my-auto">
         {/* Left Column: Hero Text & Actions */}
@@ -23,25 +23,25 @@ export const Hero = () => {
           className="lg:col-span-6 flex flex-col justify-center space-y-6 text-left"
         >
           {/* Technical Eyebrow */}
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-[#00D9FF]/30 bg-[#081019]/80 backdrop-blur-md w-fit">
-            <span className="w-2 h-2 rounded-full bg-[#00D9FF] animate-pulse" />
-            <span className="text-xs font-mono tracking-widest text-cyan-400 uppercase">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-accent-soft bg-bg-tertiary w-fit">
+            <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+            <span className="text-xs font-mono tracking-widest text-accent uppercase">
               {productData.eyebrow}
             </span>
           </div>
 
           {/* Headline */}
           <div className="space-y-1">
-            <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight font-heading text-white leading-tight">
+            <h1 className="text-4xl sm:text-5xl xl:text-6xl font-extrabold tracking-tight font-heading text-heading leading-tight">
               {productData.tagline}
             </h1>
-            <h2 className="text-2xl sm:text-3xl xl:text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#00D9FF] via-[#4EA8FF] to-[#7567E8]">
+            <h2 className="text-2xl sm:text-3xl xl:text-4xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#040b14] via-[#040b14] to-[#7567E8]">
               {productData.subTagline}
             </h2>
           </div>
 
           {/* Description */}
-          <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-xl font-sans">
+            <p className="text-secondary text-sm sm:text-base leading-relaxed max-w-xl font-sans">
             {productData.description}
           </p>
 
@@ -49,19 +49,20 @@ export const Hero = () => {
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <a
               href="#contact"
-              className="px-6 py-3.5 rounded-lg bg-gradient-to-r from-[#00D9FF] via-[#4EA8FF] to-[#00D9FF] text-black font-bold text-xs font-mono tracking-widest uppercase hover:shadow-[0_0_30px_rgba(0,217,255,0.7)] transition-all flex items-center space-x-2 group"
+              className="px-6 py-3.5 rounded-lg bg-accent text-black font-bold text-xs font-mono tracking-widest uppercase transition-all flex items-center space-x-2 group shadow-soft"
+              style={{ backgroundImage: 'linear-gradient(90deg, var(--color-primary), var(--color-secondary))' }}
             >
-              <span>REQUEST INFORMATION</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <span  >REQUEST INFORMATION</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform " />
             </a>
 
             <a
               href={productData.cataloguePath}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-6 py-3.5 rounded-lg border border-cyan-500/40 bg-[#081019]/80 text-white font-mono text-xs tracking-widest uppercase hover:border-[#00D9FF] hover:bg-cyan-500/10 transition-all flex items-center space-x-2"
+              className="px-6 py-3.5 rounded-lg border border-neutral bg-card text-heading font-mono text-xs tracking-widest uppercase hover-border-accent hover:bg-bg-secondary transition-all flex items-center space-x-2"
             >
-              <FileText className="w-4 h-4 text-[#00D9FF]" />
+              <FileText className="w-4 h-4 text-accent" />
               <span>VIEW CATALOGUE</span>
             </a>
           </div>
@@ -73,7 +74,7 @@ export const Hero = () => {
                 key={idx}
                 className="px-2.5 py-1 rounded bg-[#0D1722]/80 border border-cyan-500/20 text-[10px] font-mono text-cyan-300 tracking-wider flex items-center space-x-1"
               >
-                <span className="w-1 h-1 rounded-full bg-cyan-400" />
+                <span className="w-1 h-1 rounded-full bg-accent" />
                 <span>{badge}</span>
               </span>
             ))}
@@ -91,7 +92,7 @@ export const Hero = () => {
           <HUDOverlay title="AGM VOYAGE // DUAL OPTICS" status="ACTIVE SEARCH">
             <div className="relative w-full aspect-[4/3] bg-gradient-to-b from-[#05070B] via-[#0D1722] to-[#05070B] rounded-lg flex items-center justify-center p-6 overflow-hidden">
               {/* Tactical Scanning Beam Line */}
-              <div className="absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#00D9FF] to-transparent animate-scan z-20 pointer-events-none opacity-80" />
+              <div className="absolute inset-x-0 h-1 bg-gradient-to-r from-transparent via-[#040b14] to-transparent animate-scan z-20 pointer-events-none opacity-80" />
 
               {/* Technical Reticle Overlay */}
               <svg className="absolute inset-0 w-full h-full text-cyan-500/15 pointer-events-none" viewBox="0 0 400 300">
@@ -103,9 +104,9 @@ export const Hero = () => {
 
               {/* Stylized Electro-Optic Binocular SVG Graphic */}
               <div className="relative z-10 w-full max-w-md mx-auto flex flex-col items-center">
-                <svg viewBox="0 0 500 320" className="w-full h-auto filter drop-shadow-[0_0_25px_rgba(0,217,255,0.4)]">
+                <svg viewBox="0 0 500 320" className="w-full h-auto filter drop-shadow-[0_0_25px_#040b14]">
                   {/* Outer Armor Chassis */}
-                  <path d="M 80 80 L 210 60 L 250 80 L 290 60 L 420 80 L 440 240 L 320 270 L 250 250 L 180 270 L 60 240 Z" fill="#0D1722" stroke="#00D9FF" strokeWidth="2" />
+                  <path d="M 80 80 L 210 60 L 250 80 L 290 60 L 420 80 L 440 240 L 320 270 L 250 250 L 180 270 L 60 240 Z" fill="#0D1722" stroke="#040b14" strokeWidth="2" />
                   
                   {/* Grip Texture Strips */}
                   <rect x="90" y="100" width="30" height="100" rx="4" fill="#05070B" stroke="rgba(0,217,255,0.3)" />
@@ -113,23 +114,23 @@ export const Hero = () => {
 
                   {/* Dual Objective Lenses */}
                   {/* Left Objective Lens: Thermal Channel */}
-                  <circle cx="160" cy="170" r="55" fill="#05070B" stroke="#00D9FF" strokeWidth="3" />
+                  <circle cx="160" cy="170" r="55" fill="#05070B" stroke="#040b14" strokeWidth="3" />
                   <circle cx="160" cy="170" r="42" fill="url(#thermalGradient)" stroke="#FF5500" strokeWidth="1.5" />
-                  <circle cx="160" cy="170" r="25" fill="none" stroke="#00D9FF" strokeWidth="1" strokeDasharray="3 3" />
+                  <circle cx="160" cy="170" r="25" fill="none" stroke="#040b14" strokeWidth="1" strokeDasharray="3 3" />
 
                   {/* Right Objective Lens: Digital Low-Light Channel */}
-                  <circle cx="340" cy="170" r="55" fill="#05070B" stroke="#00D9FF" strokeWidth="3" />
+                  <circle cx="340" cy="170" r="55" fill="#05070B" stroke="#040b14" strokeWidth="3" />
                   <circle cx="340" cy="170" r="42" fill="url(#digitalGradient)" stroke="#00FF88" strokeWidth="1.5" />
                   <circle cx="340" cy="170" r="25" fill="none" stroke="#00FF88" strokeWidth="1" strokeDasharray="3 3" />
 
                   {/* Central Emitter / Rangefinder Port */}
-                  <rect x="230" y="140" width="40" height="50" rx="6" fill="#081019" stroke="#00D9FF" strokeWidth="2" />
-                  <circle cx="250" cy="165" r="12" fill="#00D9FF" opacity="0.8" className="animate-pulse" />
+                  <rect x="230" y="140" width="40" height="50" rx="6" fill="#081019" stroke="#040b14" strokeWidth="2" />
+                  <circle cx="250" cy="165" r="12" fill="#040b14" opacity="0.8" className="animate-pulse" />
 
                   {/* Control Buttons Panel (Top) */}
-                  <rect x="180" y="75" width="140" height="25" rx="4" fill="#05070B" stroke="rgba(0,217,255,0.4)" />
-                  <circle cx="200" cy="87.5" r="4" fill="#00D9FF" />
-                  <circle cx="230" cy="87.5" r="4" fill="#4EA8FF" />
+                  <rect x="180" y="75" width="140" height="25" rx="4" fill="#05070B" stroke="#040b14" />
+                  <circle cx="200" cy="87.5" r="4" fill="#040b14" />
+                  <circle cx="230" cy="87.5" r="4" fill="#040b14 " />
                   <circle cx="270" cy="87.5" r="4" fill="#7567E8" />
                   <circle cx="300" cy="87.5" r="4" fill="#00FF88" />
 
@@ -160,17 +161,17 @@ export const Hero = () => {
                     <span>DIGITAL CH2</span>
                   </span>
                   <span className="text-gray-500">|</span>
-                    <span className="text-[#00D9FF]">FUSED OUTPUT</span>
+                    <span className="text-[#040b14]">FUSED OUTPUT</span>
                 </div>
               </div>
 
               {/* Floating Orbit Indicators around chassis */}
               <div className="absolute top-4 left-4 bg-[#081019]/90 border border-cyan-500/30 px-2.5 py-1 rounded text-[10px] font-mono text-cyan-400 flex items-center space-x-1.5 shadow-lg">
-                <Crosshair className="w-3 h-3 text-[#00D9FF]" />
+                <Crosshair className="w-3 h-3 text-[#040b14]" />
                 <span>POSITIONING: ENGAGED</span>
               </div>
 
-              <div className="absolute bottom-4 right-4 bg-[#081019]/90 border border-cyan-500/30 px-2.5 py-1 rounded text-[10px] font-mono text-cyan-400 flex items-center space-x-1.5 shadow-lg">
+              <div className="absolute bottom-12 right-1 bg-[#081019]/90 border border-cyan-500/30 px-2.5 py-1 rounded text-[10px] font-mono text-cyan-400 flex items-center space-x-1.5 shadow-lg">
                 <Activity className="w-3 h-3 text-emerald-400" />
                 <span>RANGEFINDER: ACTIVE</span>
               </div>
@@ -185,10 +186,10 @@ export const Hero = () => {
           {productData.heroInfoStrip.map((item, idx) => (
             <div 
               key={idx}
-              className="p-3 rounded-lg border border-cyan-500/15 bg-[#081019]/60 backdrop-blur-md flex flex-col space-y-1 hover:border-[#00D9FF]/40 transition-colors"
+              className="p-3 rounded-lg border border-cyan-500/15 bg-[#081019]/60 backdrop-blur-md flex flex-col space-y-1 hover:border-[#040b14]/40 transition-colors"
             >
               <div className="text-[10px] font-mono text-cyan-400 tracking-widest uppercase flex items-center space-x-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#00D9FF]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#040b14]" />
                 <span>{item.label}</span>
               </div>
               <div className="text-xs font-bold text-gray-200 tracking-wide font-heading">

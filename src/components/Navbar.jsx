@@ -57,7 +57,7 @@ export const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-xs font-mono tracking-wider text-gray-300 hover:text-[#00D9FF] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-[#00D9FF] hover:after:w-full after:transition-all"
+                className="text-xs font-mono tracking-wider text-gray-300 hover:text-[#00D9FF] transition-colors relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0   hover:after:w-full after:transition-all"
               >
                 {link.name.toUpperCase()}
               </a>
@@ -78,7 +78,7 @@ export const Navbar = () => {
 
             <a
               href="#contact"
-              className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#00D9FF] to-[#4EA8FF] text-black font-semibold text-xs tracking-wider uppercase hover:shadow-[0_0_20px_rgba(0,217,255,0.6)] transition-all flex items-center space-x-1.5"
+              className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#00D9FF] to-[#040b14] text-black font-semibold text-xs tracking-wider uppercase hover:shadow-[0_0_20px_rgba(0,217,255,0.6)] transition-all flex items-center space-x-1.5"
             >
               <span>REQUEST INFORMATION</span>
               <ChevronRight className="w-3.5 h-3.5" />
@@ -122,7 +122,7 @@ export const Navbar = () => {
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-2.5 rounded-lg bg-gradient-to-r from-[#00D9FF] to-[#4EA8FF] text-black font-semibold text-center font-mono text-xs uppercase"
+                className="w-full py-2.5 rounded-lg bg-gradient-to-r from-[#00D9FF] to-[#040b14] text-black font-semibold text-center font-mono text-xs uppercase"
               >
                 REQUEST INFORMATION
               </a>

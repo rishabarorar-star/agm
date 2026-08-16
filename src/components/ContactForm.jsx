@@ -114,197 +114,437 @@ export const ContactForm = () => {
     }
   };
 
-  return (
-    <section id="contact" className="relative py-28 px-4 sm:px-6 bg-[#05070B] overflow-hidden">
-      {/* Ambient background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-gradient-to-tr from-[#00D9FF]/10 via-[#4EA8FF]/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+ return (
+  <section
+    id="contact"
+    className="relative py-28 px-4 sm:px-6 bg-[#05070B] overflow-hidden"
+  >
+    {/* Ambient lighting */}
+    <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-gray-400/[0.035] blur-[120px] pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto space-y-14 relative z-10">
-        {/* Section Header */}
-        <div className="text-center space-y-4">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full border border-cyan-500/30 bg-[#081019] text-[10px] font-mono text-cyan-400 tracking-widest uppercase">
-            <Mail className="w-3.5 h-3.5 text-[#00D9FF]" />
-            <span>COMMERCIAL ENQUIRY</span>
+    <div className="max-w-7xl mx-auto relative z-10">
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+
+        {/* LEFT — Editorial introduction */}
+        <div className="lg:col-span-5 lg:sticky lg:top-28">
+
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] text-[10px] font-mono text-gray-400 tracking-[0.2em] uppercase">
+            <Mail className="w-3.5 h-3.5" />
+            COMMERCIAL ENQUIRY
           </div>
 
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight font-heading">
-            REQUEST PRODUCT INFORMATION
+          <h2 className="mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight font-heading leading-[1.05]">
+            REQUEST
+            <br />
+            <span className="text-gray-500">
+              PRODUCT INFORMATION
+            </span>
           </h2>
 
-          <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
-            Get in touch with our team for product information, specifications, availability and commercial enquiries.
+          <p className="mt-7 max-w-lg text-sm sm:text-base text-gray-400 leading-7">
+            Get in touch with our team for product information,
+            specifications, availability and commercial enquiries.
           </p>
+
+          {/* Product reference */}
+          <div className="mt-12 rounded-2xl border border-white/[0.08]  bg-white
+              
+              border border-black/[0.06]
+              shadow-[0_30px_90px_rgba(0,0,0,0.35)] p-6">
+
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-gray-700/90 border border-gray-400/20 flex items-center justify-center">
+                <ShieldCheck className="w-4 h-4 text-gray-400" />
+              </div>
+
+              <div>
+                <span className="block text-[9px] font-mono tracking-[0.18em] text-gray-500 uppercase">
+                  INTERESTED PRODUCT
+                </span>
+
+                <span className="block mt-1 text-sm font-semibold text-white">
+                  {formData.product}
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-5 pt-5 border-t border-white/[0.06]">
+              <div className="flex items-center gap-2 text-[9px] font-mono tracking-[0.15em] text-gray-500 uppercase">
+                <span className="w-1.5 h-1.5 rounded-full bg-gray-400" />
+                PRODUCT ENQUIRY
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
-        {/* Form Container */}
-        <div className="rounded-2xl border border-cyan-500/30 bg-[#081019]/90 backdrop-blur-xl p-8 sm:p-10 shadow-2xl relative">
-          <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-            {/* Prefilled Product Field */}
-            <div className="space-y-2">
-              <label className="text-xs font-mono text-cyan-400 uppercase tracking-wider flex items-center space-x-2">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                <span>INTERESTED PRODUCT</span>
-              </label>
-              <input
-                type="text"
-                name="product"
-                value={formData.product}
-                readOnly
-                className="w-full px-4 py-3 rounded-lg border border-cyan-500/30 bg-[#05070B] text-gray-300 font-mono text-xs cursor-not-allowed focus:outline-none"
-              />
-            </div>
+        {/* RIGHT — Form */}
+        <div className="lg:col-span-7">
 
-            {/* Name + Company Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-xs font-mono text-gray-300 uppercase tracking-wider flex items-center space-x-1.5">
-                  <User className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>FULL NAME *</span>
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  placeholder="John Doe"
-                  className={`w-full px-4 py-3 rounded-lg border bg-[#05070B] text-white text-sm focus:outline-none transition-colors ${
-                    errors.name 
-                      ? 'border-red-500 focus:border-red-500' 
-                      : 'border-white/10 focus:border-[#00D9FF]'
-                  }`}
-                />
-                {errors.name && <p className="text-xs text-red-400 font-mono">{errors.name}</p>}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="
+              rounded-[2rem]
+              bg-white
+              p-6 sm:p-8 lg:p-10
+              border border-black/[0.06]
+              shadow-[0_30px_90px_rgba(0,0,0,0.35)]
+            "
+          >
+
+            <div className="mb-8">
+
+              <div className="text-[10px] font-mono tracking-[0.18em] text-gray-700 uppercase">
+                CONTACT DETAILS
               </div>
 
-              <div className="space-y-2">
-                <label className="text-xs font-mono text-gray-300 uppercase tracking-wider flex items-center space-x-1.5">
-                  <Building className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>COMPANY / ORGANIZATION</span>
-                </label>
-                <input
-                  type="text"
-                  name="company"
-                  value={formData.company}
-                  onChange={handleChange}
-                  placeholder="Defense Optics Inc."
-                  className="w-full px-4 py-3 rounded-lg border border-white/10 bg-[#05070B] text-white text-sm focus:outline-none focus:border-[#00D9FF] transition-colors"
-                />
-              </div>
+              <h3 className="mt-2 text-2xl font-bold text-[#111827] font-heading">
+                Tell us about your requirements
+              </h3>
+
             </div>
 
-            {/* Email + Phone Row */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-xs font-mono text-gray-300 uppercase tracking-wider flex items-center space-x-1.5">
-                  <Mail className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>EMAIL ADDRESS *</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder="john@organization.com"
-                  className={`w-full px-4 py-3 rounded-lg border bg-[#05070B] text-white text-sm focus:outline-none transition-colors ${
-                    errors.email 
-                      ? 'border-red-500 focus:border-red-500' 
-                      : 'border-white/10 focus:border-[#00D9FF]'
-                  }`}
-                />
-                {errors.email && <p className="text-xs text-red-400 font-mono">{errors.email}</p>}
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-xs font-mono text-gray-300 uppercase tracking-wider flex items-center space-x-1.5">
-                  <Phone className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>PHONE NUMBER</span>
-                </label>
-                <input
-                  type="tel"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="+1 (555) 000-0000"
-                  className="w-full px-4 py-3 rounded-lg border border-white/10 bg-[#05070B] text-white text-sm focus:outline-none focus:border-[#00D9FF] transition-colors"
-                />
-              </div>
-            </div>
-
-            {/* Message Field */}
-            <div className="space-y-2">
-              <label className="text-xs font-mono text-gray-300 uppercase tracking-wider flex items-center space-x-1.5">
-                <MessageSquare className="w-3.5 h-3.5 text-cyan-400" />
-                <span>MESSAGE *</span>
-              </label>
-              <textarea
-                name="message"
-                rows={4}
-                value={formData.message}
-                onChange={handleChange}
-                placeholder="Specify your inquiry details, technical requirements, or procurement timeline..."
-                className={`w-full px-4 py-3 rounded-lg border bg-[#05070B] text-white text-sm focus:outline-none transition-colors ${
-                  errors.message 
-                    ? 'border-red-500 focus:border-red-500' 
-                    : 'border-white/10 focus:border-[#00D9FF]'
-                }`}
-              />
-              {errors.message && <p className="text-xs text-red-400 font-mono">{errors.message}</p>}
-            </div>
-
-            {/* Status Notifications */}
-            <AnimatePresence>
-              {submitStatus === 'success' && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="p-4 rounded-lg bg-emerald-950/60 border border-emerald-500/50 text-emerald-300 text-sm font-sans flex items-start space-x-3"
-                >
-                  <CheckCircle2 className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold block font-heading">Enquiry Received</span>
-                    <span>{statusMessage}</span>
-                  </div>
-                </motion.div>
-              )}
-
-              {submitStatus === 'error' && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="p-4 rounded-lg bg-red-950/60 border border-red-500/50 text-red-300 text-sm font-sans flex items-start space-x-3"
-                >
-                  <AlertTriangle className="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
-                  <div>
-                    <span className="font-bold block font-heading">Submission Error</span>
-                    <span>{statusMessage}</span>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="w-full py-4 rounded-lg bg-gradient-to-r from-[#00D9FF] via-[#4EA8FF] to-[#00D9FF] text-black font-bold text-xs font-mono tracking-widest uppercase hover:shadow-[0_0_30px_rgba(0,217,255,0.7)] disabled:opacity-50 transition-all flex items-center justify-center space-x-2"
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-6"
+              noValidate
             >
-              {isSubmitting ? (
-                <>
-                  <Loader2 className="w-4 h-4 animate-spin text-black" />
-                  <span>SENDING ENQUIRY...</span>
-                </>
-              ) : (
-                <>
-                  <Send className="w-4 h-4 text-black" />
-                  <span>SEND ENQUIRY</span>
-                </>
-              )}
-            </button>
-          </form>
+
+              {/* Name + Company */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+                <div className="space-y-2">
+
+                  <label className="text-[10px] font-mono font-semibold tracking-[0.12em] text-[#6B7280] uppercase">
+                    Full Name *
+                  </label>
+
+                  <div className="relative">
+                    <User className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
+
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="John Doe"
+                      className={`
+                        w-full
+                        pl-11 pr-4 py-3.5
+                        rounded-xl
+                        border
+                        bg-[#F7F8FA]
+                        text-[#111827]
+                        text-sm
+                        placeholder:text-[#A1A7B0]
+                        outline-none
+                        transition-all
+                        ${
+                          errors.name
+                            ? 'border-red-400 focus:ring-2 focus:ring-red-100'
+                            : 'border-black/[0.07] focus:border-gray-500 focus:ring-2 focus:ring-gray-500/10'
+                        }
+                      `}
+                    />
+                  </div>
+
+                  {errors.name && (
+                    <p className="text-[10px] text-red-500 font-mono">
+                      {errors.name}
+                    </p>
+                  )}
+
+                </div>
+
+                <div className="space-y-2">
+
+                  <label className="text-[10px] font-mono font-semibold tracking-[0.12em] text-[#6B7280] uppercase">
+                    Company / Organization
+                  </label>
+
+                  <div className="relative">
+                    <Building className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
+
+                    <input
+                      type="text"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      placeholder="Organization"
+                      className="
+                        w-full
+                        pl-11 pr-4 py-3.5
+                        rounded-xl
+                        border border-black/[0.07]
+                        bg-[#F7F8FA]
+                        text-[#111827]
+                        text-sm
+                        placeholder:text-[#A1A7B0]
+                        outline-none
+                        transition-all
+                        focus:border-gray-500
+                        focus:ring-2
+                        focus:ring-gray-500/10
+                      "
+                    />
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* Email + Phone */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+
+                <div className="space-y-2">
+
+                  <label className="text-[10px] font-mono font-semibold tracking-[0.12em] text-[#6B7280] uppercase">
+                    Email Address *
+                  </label>
+
+                  <div className="relative">
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
+
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="name@organization.com"
+                      className={`
+                        w-full
+                        pl-11 pr-4 py-3.5
+                        rounded-xl
+                        border
+                        bg-[#F7F8FA]
+                        text-[#111827]
+                        text-sm
+                        placeholder:text-[#A1A7B0]
+                        outline-none
+                        transition-all
+                        ${
+                          errors.email
+                            ? 'border-red-400 focus:ring-2 focus:ring-red-100'
+                            : 'border-black/[0.07] focus:border-gray-500 focus:ring-2 focus:ring-gray-500/10'
+                        }
+                      `}
+                    />
+                  </div>
+
+                  {errors.email && (
+                    <p className="text-[10px] text-red-500 font-mono">
+                      {errors.email}
+                    </p>
+                  )}
+
+                </div>
+
+                <div className="space-y-2">
+
+                  <label className="text-[10px] font-mono font-semibold tracking-[0.12em] text-[#6B7280] uppercase">
+                    Phone Number
+                  </label>
+
+                  <div className="relative">
+                    <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9CA3AF]" />
+
+                    <input
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+1 (555) 000-0000"
+                      className="
+                        w-full
+                        pl-11 pr-4 py-3.5
+                        rounded-xl
+                        border border-black/[0.07]
+                        bg-[#F7F8FA]
+                        text-[#111827]
+                        text-sm
+                        placeholder:text-[#A1A7B0]
+                        outline-none
+                        transition-all
+                        focus:border-gray-500
+                        focus:ring-2
+                        focus:ring-gray-500/10
+                      "
+                    />
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* Message */}
+              <div className="space-y-2">
+
+                <label className="text-[10px] font-mono font-semibold tracking-[0.12em] text-[#6B7280] uppercase">
+                  Message *
+                </label>
+
+                <div className="relative">
+
+                  <MessageSquare className="absolute left-4 top-4 w-4 h-4 text-[#9CA3AF]" />
+
+                  <textarea
+                    name="message"
+                    rows={5}
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Tell us about your requirements, technical specifications or procurement timeline..."
+                    className={`
+                      w-full
+                      pl-11 pr-4 py-3.5
+                      rounded-xl
+                      border
+                      bg-[#F7F8FA]
+                      text-[#111827]
+                      text-sm
+                      placeholder:text-[#A1A7B0]
+                      outline-none
+                      resize-none
+                      transition-all
+                      ${
+                        errors.message
+                          ? 'border-red-400 focus:ring-2 focus:ring-red-100'
+                          : 'border-black/[0.07] focus:border-gray-500 focus:ring-2 focus:ring-gray-500/10'
+                      }
+                    `}
+                  />
+
+                </div>
+
+                {errors.message && (
+                  <p className="text-[10px] text-red-500 font-mono">
+                    {errors.message}
+                  </p>
+                )}
+
+              </div>
+
+              {/* Status */}
+              <AnimatePresence>
+                {submitStatus === 'success' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="
+                      flex
+                      items-start
+                      gap-3
+                      rounded-xl
+                      bg-emerald-50
+                      border border-emerald-200
+                      p-4
+                      text-emerald-700
+                    "
+                  >
+                    <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5 text-emerald-600" />
+
+                    <div>
+                      <span className="block text-sm font-bold">
+                        Enquiry Received
+                      </span>
+
+                      <span className="block mt-1 text-xs leading-5">
+                        {statusMessage}
+                      </span>
+                    </div>
+                  </motion.div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="
+                      flex
+                      items-start
+                      gap-3
+                      rounded-xl
+                      bg-red-50
+                      border border-red-200
+                      p-4
+                      text-red-700
+                    "
+                  >
+                    <AlertTriangle className="w-5 h-5 shrink-0 mt-0.5 text-red-600" />
+
+                    <div>
+                      <span className="block text-sm font-bold">
+                        Submission Error
+                      </span>
+
+                      <span className="block mt-1 text-xs leading-5">
+                        {statusMessage}
+                      </span>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Submit */}
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="
+                  group
+                  w-full
+                  py-4
+                  rounded-xl
+                  bg-[#111827]/20
+                  text-white
+                  font-bold
+                  text-[10px]
+                  font-mono
+                  tracking-[0.18em]
+                  uppercase
+                  transition-all
+                  duration-300
+                  hover:bg-gray-200
+                  
+                  disabled:opacity-50
+                  flex
+                  items-center
+                  justify-center
+                  gap-2
+                "
+              >
+
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>Sending Enquiry...</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Send Enquiry</span>
+                    <Send className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                  </>
+                )}
+
+              </button>
+
+              <p className="text-center text-[9px] font-mono tracking-wider text-[#9CA3AF]">
+                YOUR INFORMATION IS USED ONLY TO RESPOND TO THIS ENQUIRY
+              </p>
+
+            </form>
+
+          </motion.div>
+
         </div>
+
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 };

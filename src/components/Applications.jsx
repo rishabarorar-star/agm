@@ -18,9 +18,7 @@ export const Applications = () => {
 
   return (
     <section id="applications" className="relative py-28 px-4 sm:px-6 bg-[#05070B] overflow-hidden">
-      {/* Background Glow */}
-      <div className="absolute top-1/3 -left-40 w-[600px] h-[600px] bg-[#00D9FF]/5 rounded-full blur-3xl pointer-events-none" />
-
+     
       <div className="max-w-7xl mx-auto space-y-16 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">

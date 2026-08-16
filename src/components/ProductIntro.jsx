@@ -7,9 +7,8 @@ export const ProductIntro = () => {
   const [activeStep, setActiveStep] = useState(2); // Default to FUSION step
 
   return (
-    <section className="relative py-24 px-4 sm:px-6 bg-[#081019]/70 border-y border-cyan-500/15 overflow-hidden">
+    <section className="relative py-24 px-4 sm:px-6 bg-[#081019]/10  overflow-hidden">
       {/* Background glow */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-[#00D9FF]/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto space-y-16 relative z-10">
         {/* Section Header */}

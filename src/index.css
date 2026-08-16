@@ -2,10 +2,40 @@
 @import "tailwindcss";
 
 :root {
+  /* Theme tokens (source of truth) */
+  --color-primary: #1F2937;
+  --color-primary-rgb: 31,41,55;
+  --color-secondary: #475569;
+  --color-secondary-rgb: 71,85,105;
+  --color-primary-dark: #111827;
+  --color-primary-light: #F1F5F9;
+
+  --color-background: #FFFFFF;
+  --color-background-secondary: #F8FAFC;
+  --color-background-tertiary: #F1F5F9;
+
+  --color-text: #0B1220;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748B;
+
+  --color-border: #E2E8F0;
+  --color-card: #FFFFFF;
+
+  --color-glow: var(--color-primary);
+
+  /* Compatibility aliases used by existing CSS */
+  --accent: var(--color-primary);
+  --accent-bg: rgba(var(--color-primary-rgb), 0.04);
+  --accent-border: rgba(var(--color-primary-rgb), 0.12);
+  --border: var(--color-border);
+  --text-h: var(--color-text);
+  --social-bg: var(--color-background-secondary);
+  --shadow: 0 8px 30px rgba(2,6,23,0.06);
+
   font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  color-scheme: dark;
-  background-color: #05070B;
-  color: #F3F4F6;
+  color-scheme: light;
+  background-color: var(--color-background);
+  color: var(--color-text);
 }
 
 h1, h2, h3, h4, h5, h6, .font-mono-tech, .font-heading {
@@ -17,15 +47,15 @@ h1, h2, h3, h4, h5, h6, .font-mono-tech, .font-heading {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #05070B;
+  background: var(--color-background);
 }
 ::-webkit-scrollbar-thumb {
-  background: #0D1722;
-  border: 1px solid rgba(0, 217, 255, 0.2);
-  border-radius: 4px;
+  background: var(--color-background-secondary);
+  border: 1px solid rgba(var(--color-primary-rgb), 0.12);
+  border-radius: 6px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 217, 255, 0.4);
+  background: rgba(var(--color-primary-rgb), 0.12);
 }
 
 /* Scanning line animation */
@@ -46,11 +76,11 @@ h1, h2, h3, h4, h5, h6, .font-mono-tech, .font-heading {
 @keyframes pulseGlow {
   0%, 100% {
     opacity: 0.3;
-    filter: drop-shadow(0 0 15px rgba(0, 217, 255, 0.4));
+    filter: drop-shadow(0 0 12px rgba(var(--color-primary-rgb), 0.28));
   }
   50% {
     opacity: 0.8;
-    filter: drop-shadow(0 0 30px rgba(0, 217, 255, 0.8));
+    filter: drop-shadow(0 0 28px rgba(var(--color-primary-rgb), 0.36));
   }
 }
 
@@ -62,8 +92,8 @@ h1, h2, h3, h4, h5, h6, .font-mono-tech, .font-heading {
 .bg-tactical-grid {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(0, 217, 255, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 217, 255, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(var(--color-primary-rgb), 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(var(--color-primary-rgb), 0.04) 1px, transparent 1px);
 }
 
 /* Radar pulse animation */
@@ -83,28 +113,201 @@ h1, h2, h3, h4, h5, h6, .font-mono-tech, .font-heading {
 }
 
 /* Custom glow utility classes */
-.glow-cyan-sm {
-  box-shadow: 0 0 15px -3px rgba(0, 217, 255, 0.3);
+.glow-accent-sm {
+  box-shadow: 0 0 18px -4px rgba(var(--color-primary-rgb), 0.28);
 }
 
-.glow-cyan-lg {
-  box-shadow: 0 0 35px -5px rgba(0, 217, 255, 0.4);
+.glow-accent-lg {
+  box-shadow: 0 0 40px -8px rgba(var(--color-primary-rgb), 0.32);
 }
 
-.border-cyan-glow {
-  border-color: rgba(0, 217, 255, 0.3);
-  box-shadow: inset 0 0 15px rgba(0, 217, 255, 0.1);
+.border-accent-glow {
+  border-color: rgba(var(--color-primary-rgb), 0.18);
+  box-shadow: inset 0 0 12px rgba(var(--color-primary-rgb), 0.06);
 }
 
 /* Glassmorphism tactical card */
 .tactical-card {
-  background: rgba(13, 23, 34, 0.65);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 217, 255, 0.15);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: none !important;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06);
 }
 
 .tactical-card:hover {
-  border-color: rgba(0, 217, 255, 0.4);
-  box-shadow: 0 8px 32px 0 rgba(0, 217, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(2,6,23,0.08);
+}
+
+/* Card style: prefer soft shadows, no borders for a premium light look */
+[class*='rounded-lg'][class*='border'],
+[class*='rounded-xl'][class*='border'],
+[class*='p-3'][class*='rounded-lg'],
+[class*='p-3'][class*='rounded-xl'],
+[class*='p-6'][class*='rounded-lg'] {
+  border: none !important;
+  background: var(--color-card) !important;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.06) !important;
+}
+
+/* Small variation for denser card areas */
+[class*='p-3'][class*='rounded-lg'] {
+  box-shadow: 0 4px 14px rgba(2,6,23,0.04) !important;
+}
+
+/* Override common hardcoded utility colors used in components (map old dark/cyan tokens to theme tokens) */
+
+/* Backgrounds */
+[class*='bg-[#05070B]'] { background-color: var(--color-background) !important; color: var(--color-text) !important; }
+[class*='bg-[#0D1722]'] { background-color: var(--color-background-secondary) !important; }
+[class*='bg-[#081019]'] { background-color: var(--color-background-tertiary) !important; }
+
+/* Text / icons */
+[class*='text-[#00D9FF]'] { color: var(--color-primary) !important; }
+[class*='text-[#040b14]'] { color: var(--color-secondary) !important; }
+
+/* Borders */
+[class*='border-[#00D9FF]'] { border-color: rgba(var(--color-primary-rgb), 1) !important; }
+[class*='border-cyan-500'] { border-color: rgba(var(--color-primary-rgb), 0.5) !important; }
+
+/* Gradients: override gradient color stops generated from old hex values */
+[class*='from-[#00D9FF]'] { --tw-gradient-from: rgba(var(--color-primary-rgb), 1) !important; }
+[class*='via-[#040b14]'] { --tw-gradient-stops: rgba(var(--color-primary-rgb), 0.65), rgba(var(--color-secondary-rgb), 0.35) !important; }
+[class*='to-[#7567E8]'] { --tw-gradient-to: rgba(var(--color-secondary-rgb), 0.18) !important; }
+
+/* Selection color */
+::selection { background: rgba(var(--color-primary-rgb), 0.14); color: var(--color-text); }
+
+/* Map utility text-white to primary text on light theme */
+/* Improve gray utility contrast on light backgrounds */
+.text-gray-300 { color: var(--color-text-secondary) !important; }
+.text-gray-200 { color: var(--color-text-secondary) !important; }
+.text-gray-400 { color: var(--color-text-muted) !important; }
+.text-gray-500 { color: var(--color-text-muted) !important; }
+.text-gray-600 { color: var(--color-text-muted) !important; }
+.text-gray-100 { color: var(--color-text) !important; }
+
+/* Ensure elements that were styled for dark backgrounds now show dark text when backgrounds were converted to light */
+[class*='bg-[#05070B]'] .text-white,
+[class*='bg-[#05070B]'].text-white,
+[class*='bg-[#0D1722]'] .text-white,
+[class*='bg-[#0D1722]'].text-white,
+[class*='bg-[#081019]'] .text-white,
+[class*='bg-[#081019]'].text-white {
+  color: var(--color-text) !important;
+}
+
+/* Gradient-based UI elements (primary CTAs) should use white text for contrast */
+[class*='from-[#00D9FF]'],
+[class*='from-[#040b14]'],
+[class*='from-[#7567E8]'] {
+  color: #fff !important;
+}
+
+/* Map remaining bluish token usages to theme accents */
+[class*='text-[#040b14]'] { color: var(--color-secondary) !important; }
+[class*='text-[#7567E8]'] { color: var(--color-secondary) !important; }
+[class*='text-[#00FF88]'] { color: var(--color-primary) !important; }
+
+/* Restore sensible mapping for text-black and text-white */
+.text-black { color: var(--color-text) !important; }
+.text-white { color: var(--color-text) !important; }
+
+/* But ensure CTA/gradient elements keep white text */
+[class*='from-[#00D9FF]'],
+[class*='from-[#040b14]'],
+[class*='from-[#7567E8]'] {
+  color: #fff !important;
+}
+
+/* Elements with accent background should use white text */
+[class*='bg-[#00D9FF]'] .text-black,
+[class*='bg-[#00D9FF]'].text-black,
+[class*='bg-[#00D9FF]'] .text-white,
+[class*='bg-[#00D9FF]'].text-white {
+  color: #fff !important;
+}
+
+/* Replace explicit cyan rgba glows/shadows with neutral soft shadows */
+[class*='rgba(0,217,255'],
+[class*='rgba(0, 217, 255'],
+[class*='rgba(0,217,255'] {
+  box-shadow: 0 8px 28px rgba(2,6,23,0.06) !important;
+  border-color: rgba(var(--color-primary-rgb), 0.08) !important;
+}
+
+/* Generic match for shadow utilities containing 0_0_*_rgba(0,217,255 */
+[class*='shadow-[0_0'] { box-shadow: 0 8px 28px rgba(2,6,23,0.06) !important; }
+
+/* Make CTA selected buttons readable: replace text-black on accent bg with white */
+[class*='bg-[#00D9FF]'].text-black, [class*='bg-[#00D9FF]'] .text-black { color: #fff !important; }
+
+/* Ensure small label colors use primary accent where appropriate */
+[class*='text-cyan-400'] { color: var(--color-primary) !important; }
+[class*='text-cyan-300'] { color: var(--color-secondary) !important; }
+
+/* SVG inline attribute overrides (replace hardcoded fills/strokes) */
+svg [fill='#0D1722'] { fill: var(--color-background-secondary) !important; }
+svg [fill='#05070B'] { fill: var(--color-background) !important; }
+svg [fill='#081019'] { fill: var(--color-background-tertiary) !important; }
+svg [stroke='#00D9FF'] { stroke: var(--color-primary) !important; }
+svg [stroke='#040b14 '] { stroke: var(--color-secondary) !important; }
+svg [stroke='#7567E8'] { stroke: rgba(var(--color-secondary-rgb), 0.85) !important; }
+
+/* Lightweight utility classes for theme tokens (used by components) */
+.text-accent { color: var(--color-primary) !important; }
+.text-secondary-accent { color: var(--color-secondary) !important; }
+.text-heading { color: var(--color-text) !important; }
+.text-secondary { color: var(--color-text-secondary) !important; }
+.text-muted { color: var(--color-text-muted) !important; }
+
+.bg-accent { background-color: var(--color-primary) !important; }
+.bg-accent-soft { background-color: rgba(var(--color-primary-rgb), 0.06) !important; }
+.bg-secondary-soft { background-color: rgba(var(--color-secondary-rgb), 0.06) !important; }
+.bg-bg-secondary { background-color: var(--color-background-secondary) !important; }
+.bg-bg-tertiary { background-color: var(--color-background-tertiary) !important; }
+.bg-card { background-color: var(--color-card) !important; }
+.bg-site { background-color: var(--color-background) !important; }
+
+.border-accent { border-color: var(--color-primary) !important; }
+.border-accent-soft { border-color: rgba(var(--color-primary-rgb), 0.12) !important; }
+.border-neutral { border-color: var(--color-border) !important; }
+
+.hover-text-accent:hover { color: var(--color-primary) !important; }
+.hover-border-accent:hover { border-color: var(--color-primary) !important; }
+
+.shadow-soft { box-shadow: 0 8px 28px rgba(2,6,23,0.06) !important; }
+.shadow-sm-soft { box-shadow: 0 4px 14px rgba(2,6,23,0.04) !important; }
+
+/* Broad hex remapping: catch remaining inline hex usages and map to theme tokens */
+/* Match by substring to cover Tailwind arbitrary classes like bg-[#00D9FF]/10 */
+[class*='00D9FF'] { color: var(--color-primary) !important; }
+[class*='4EA8FF'] { color: var(--color-secondary) !important; }
+[class*='7567E8'] { color: var(--color-secondary) !important; }
+
+/* Background mappings */
+[class*='bg-[#00D9FF]'] { background-color: var(--color-primary) !important; color: #fff !important; }
+[class*='bg-[#040b14]'] { background-color: rgba(var(--color-secondary-rgb), 0.06) !important; }
+[class*='bg-[#7567E8]'] { background-color: rgba(var(--color-secondary-rgb), 0.06) !important; }
+
+/* Dark background tokens -> light theme equivalents */
+[class*='bg-[#05070B]'] { background-color: var(--color-background) !important; color: var(--color-text) !important; }
+[class*='bg-[#0D1722]'] { background-color: var(--color-background-secondary) !important; }
+[class*='bg-[#081019]'] { background-color: var(--color-background-tertiary) !important; }
+
+/* Borders and accent borders */
+[class*='border-[#00D9FF]'] { border-color: rgba(var(--color-primary-rgb), 0.12) !important; }
+[class*='border-cyan-500'] { border-color: rgba(var(--color-primary-rgb), 0.12) !important; }
+
+/* Replace cyan box-shadows with subtle neutral shadows */
+[class*='rgba(0,217,255'] { box-shadow: 0 8px 28px rgba(2,6,23,0.06) !important; }
+[class*='rgba(0, 217, 255'] { box-shadow: 0 8px 28px rgba(2,6,23,0.06) !important; }
+
+/* Ensure small cyan label utilities use new accent */
+[class*='text-cyan-400'] { color: var(--color-primary) !important; }
+[class*='text-cyan-300'] { color: var(--color-secondary) !important; }
+
+/* Ensure elements explicitly using white on converted light backgrounds become readable */
+[class*='bg-[#0D1722]'] .text-white, [class*='bg-[#081019]'] .text-white, [class*='bg-[#05070B]'] .text-white {
+  color: var(--color-text) !important;
 }

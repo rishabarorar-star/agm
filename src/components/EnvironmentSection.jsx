@@ -13,7 +13,7 @@ export const EnvironmentSection = () => {
   };
 
   return (
-    <section className="relative py-24 px-4 sm:px-6 bg-[#081019]/80 border-y border-cyan-500/15 overflow-hidden">
+    <section className="relative py-24 px-4 sm:px-6 bg-[#081019]/80 overflow-hidden">
       {/* Ambient background lighting */}
       <div className="absolute top-1/2 -right-40 w-[600px] h-[600px] bg-[#7567E8]/10 rounded-full blur-3xl pointer-events-none" />
 
